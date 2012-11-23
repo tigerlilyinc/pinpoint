@@ -9,6 +9,21 @@
   </head>
   <body>
     <style>
+      body {
+        font-family: "promixa-nova", Helvetica, Arial, Verdana, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: 1.5em;
+        background-color: white
+        font-weight: 300;
+        font-style: normal;
+      }
+
+      h1, h2, h3, h4, h5, h6, h7, .cronos {
+        font-family: "cronos-pro-subhead";
+        font-weight: 300;
+      }
+
       .navbar-wrapper {
         position: relative;
         z-index: 10;
@@ -75,13 +90,16 @@
       }
       .blocks ul li .header {
         color: #474d5a;
-        font-size: 16px;
       }
       .blocks ul li .text {
         color: #474d5a;
-        font-size: 14px;
-        line-height: 16px;
         padding-right: 16px;
+      }
+      footer p {
+        color: #87909d;
+        border-top: 1px solid #eee;
+        font-size: 12px;
+        padding: 10px;
       }
     </style>
     <div class="container navbar-wrapper">
@@ -120,6 +138,11 @@
         </ul>
       </div>
     </div>
+    <footer>
+      <div class="container">
+        <p>pinpoint.io | &copy; Tigerlily Labs, Inc. 2012 | <a href="mailto:team@pinpoint.io" target="_blank">Contact us!</a></p>
+      </div>
+    </footer>
     <script>
       $(function() {
         var content = {
