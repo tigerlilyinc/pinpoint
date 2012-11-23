@@ -5,6 +5,7 @@
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
     <script type="text/javascript" src="//use.typekit.net/lpk4dad.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="/javascripts/libs/jquery/jquery-min.js"></script>
   </head>
   <body>
     <style>
@@ -75,34 +76,32 @@
     <div class="container navbar-wrapper">
       <div class="navbar navbar-inverse">
         <div class="navbar-inner">
-          <a class="brand" href="#">pinpoint.io</a>
+          <a class="brand" href="#" data-content="home">pinpoint.io</a>
         </div>
       </div>
     </div>
     <div class="bg">
       <div class="container">
         <div class="hero">
-          <h1>Find the right fit</h1>
-          <p class="lead">
-            Searching for the perfect fit can seem like a daunting task, but pinpoint.io is here for you!
-          </p>
+          <h1 class="header"></h1>
+          <p class="lead"></p>
         </div>
       </div>
     </div>
     <div class="blocks-container">
       <div class="blocks">
         <ul>
-          <li>
+          <li class="developers" data-content="developers">
             <img src="/images/developers.jpg" />
             <h4>Developers</h4>
             <p>Just list your skills and we'll find the best fit for you right away.</p>
           </li>
-          <li>
+          <li class="companies" data-content="companies">
             <img src="/images/companies.jpg" />
             <h4>Companies</h4>
             <p>It can be exhuasting to find the best candidates, so let us search for you.</p>
           </li>
-          <li>
+          <li class="robots" data-content="robots">
             <img src="/images/robot.png" />
             <h4>Robots</h4>
             <p>*Bleep boop* 010101000100 0100010 10010010 0101000101</p>
@@ -110,6 +109,46 @@
         </ul>
       </div>
     </div>
+    <script>
+      $(function() {
+        var content = {
+          'home': {
+            'header': 'Find the right fit',
+            'text': 'Searching for the perfect fit can seem like a daunting task, but pinpoint.io is here for you!'
+          },
+          'developers': {
+            'header': 'We do the search for you',
+            'text': 'Searching for the perfect fit can seem like a daunting task, but pinpoint.io is here for you!'
+          },
+          'companies': {
+            'header': 'Qualified candidates knocking at your door',
+            'text': 'Searching for the perfect fit can seem like a daunting task, but pinpoint.io is here for you!'
+          },
+          'robots': {
+            'header': 'BEEP BOOP',
+            'text': 'KILL ALL HUMANS'
+          }
+        }
+        var switchContent = function(e) {
+          var target = $(e.currentTarget);
+          var dataContent = target.attr('data-content');
+          var contentObject = content[dataContent];
+          var header = contentObject.header;
+          var lead = contentObject.text;
+
+          $(".hero").fadeOut(function() {
+            $(".hero .header").html(header);
+            $(".hero .lead").html(lead);
+            $(".hero").fadeIn();
+          });
+
+          return false;
+        };
+
+        $("[data-content]").click(switchContent);
+        $("a.brand").trigger("click");
+      });
+    </script>
   </body>
 </html>
 
