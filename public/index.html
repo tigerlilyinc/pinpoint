@@ -226,6 +226,17 @@
           $(this).find("img").attr("src", "/images/robots_bw.png");
         }
       });
+
+      function preload(arrayOfImages) {
+        $(arrayOfImages).each(function(){
+          $('<img/>')[0].src = this;
+        });
+      }
+      preload([
+        '/images/developers.png',
+        '/images/companies.png',
+        '/images/robots.png'
+      ]);
       </script>
     </body>
   </html>
