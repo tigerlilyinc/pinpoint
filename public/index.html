@@ -119,17 +119,17 @@
       <div class="blocks">
         <ul>
           <li class="developers" data-content="developers">
-            <img src="/images/developers.jpg" />
+            <img src="/images/developers_bw.png" />
             <h4 class="header">Developers</h4>
             <p class="text">Just list your skills and we'll find the best fit for you right away.</p>
           </li>
           <li class="companies" data-content="companies">
-            <img src="/images/companies.jpg" />
+            <img src="/images/companies_bw.jpg" />
             <h4 class="header">Companies</h4>
             <p class="text">It can be exhuasting to find the best candidates, so let us search for you.</p>
           </li>
           <li class="robots" data-content="robots">
-            <img src="/images/robot.png" />
+            <img src="/images/robots_bw.png" />
             <h4 class="header">Robots</h4>
             <p class="text">We will give you tuneups and oil required to keep your machinery running smoothly.</p>
           </li>
@@ -162,8 +162,26 @@
           }
         }
         var switchContent = function(e) {
+          $(".blocks li").removeClass("active");
           var target = $(e.currentTarget);
+          target.addClass("active");
           var dataContent = target.attr('data-content');
+          switch(dataContent) {
+            case "developers":
+              $(".blocks li.companies img").attr("src", "/images/companies_bw.png");
+              $(".blocks li.robots img").attr("src", "/images/robots_bw.png");
+            break;
+            case "companies":
+              $(".blocks li.developers img").attr("src", "/images/developers_bw.png");
+              $(".blocks li.robots img").attr("src", "/images/robots_bw.png");
+            break;
+            case "robots":
+              $(".blocks li.developers img").attr("src", "/images/developers_bw.png");
+              $(".blocks li.companies img").attr("src", "/images/companies_bw.png");
+            break;
+            default:
+            alert("BAD CASE");
+          }
           var contentObject = content[dataContent];
           var header = contentObject.header;
           var lead = contentObject.text;
@@ -182,7 +200,29 @@
         $(".hero .lead").html(lead);
         $(".hero").fadeIn();
       });
-    </script>
-  </body>
-</html>
+
+      $("li.developers").hover(function() {
+        $(this).find("img").attr("src", "/images/developers.png");
+      }, function() {
+        if (!$(this).hasClass("active")) {
+          $(this).find("img").attr("src", "/images/developers_bw.png");
+        }
+      });
+      $("li.companies").hover(function() {
+        $(this).find("img").attr("src", "/images/companies.png");
+      }, function() {
+        if (!$(this).hasClass("active")) {
+          $(this).find("img").attr("src", "/images/companies_bw.png");
+        }
+      });
+      $("li.robots").hover(function() {
+        $(this).find("img").attr("src", "/images/robots.png");
+      }, function() {
+        if (!$(this).hasClass("active")) {
+          $(this).find("img").attr("src", "/images/robots_bw.png");
+        }
+      });
+      </script>
+    </body>
+  </html>
 
