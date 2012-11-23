@@ -20,6 +20,7 @@
         height: 600px;
       }
       .hero {
+        display: none;
         margin-top: 160px;
         margin-left: 107px;
         width: 500px;
@@ -135,18 +136,20 @@
           var contentObject = content[dataContent];
           var header = contentObject.header;
           var lead = contentObject.text;
-
-          $(".hero").fadeOut(function() {
-            $(".hero .header").html(header);
-            $(".hero .lead").html(lead);
-            $(".hero").fadeIn();
-          });
-
+          $(".hero").hide();
+          $(".hero .header").html(header);
+          $(".hero .lead").html(lead);
+          $(".hero").fadeIn();
           return false;
         };
 
         $("[data-content]").click(switchContent);
-        $("a.brand").trigger("click");
+        var contentObject = content["home"];
+        var header = contentObject.header;
+        var lead = contentObject.text;
+        $(".hero .header").html(header);
+        $(".hero .lead").html(lead);
+        $(".hero").fadeIn();
       });
     </script>
   </body>
