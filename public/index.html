@@ -180,8 +180,11 @@
               $(".blocks li.developers img").attr("src", "/images/developers_bw.png");
               $(".blocks li.companies img").attr("src", "/images/companies_bw.png");
             break;
-            default:
-            alert("BAD CASE");
+            case "home":
+              $(".blocks li.developers img").attr("src", "/images/developers_bw.png");
+              $(".blocks li.companies img").attr("src", "/images/companies_bw.png");
+              $(".blocks li.robots img").attr("src", "/images/robots_bw.png");
+            break;
           }
           var contentObject = content[dataContent];
           var header = contentObject.header;
