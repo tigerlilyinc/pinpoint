@@ -18,5 +18,10 @@ class SessionsController < Devise::SessionsController
   def failure
     render :json => {auth: false}
   end
+
+  def destroy
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    render :json => {auth: false}
+  end
 end
 

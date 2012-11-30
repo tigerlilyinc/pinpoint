@@ -16,12 +16,8 @@ define([
     that.loginView = new LoginView;
     this.gotoLogin = function () {
       Bus.trigger('setTitle', "Login");
-      if (!Session.checkAuth()) {
-        that.loginView.setElement($("#content"));
-        that.loginView.render();
-      } else {
-        window.location = '#';
-      }
+      that.loginView.setElement($("#content"));
+      that.loginView.render();
     };
     Bus.on('invalidSessionAuth', this.gotoLogin, this);
 
