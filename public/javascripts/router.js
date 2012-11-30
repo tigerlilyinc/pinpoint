@@ -10,13 +10,6 @@ define([
       'login': 'login',
       'logout': 'logout',
 
-      'matches': 'matches',
-      'explore': 'explore',
-      'profile': 'profile',
-
-      'info/developers': 'infoDevelopers',
-      'info/companies': 'infoCompanies',
-
       // Default
       '*default': 'default'
     },
@@ -43,18 +36,6 @@ define([
       Bus.trigger('setTitle', 'Matches');
       require(['views/matches'], function (matchesView) {
         matchesView.render();
-      });
-    },
-    explore: function() {
-      Bus.trigger('setTitle', "Explore");
-      require(['views/explore'], function (exploreView) {
-        exploreView.render();
-      });
-    },
-    profile: function() {
-      Bus.trigger('setTitle', "Profile");
-      require(['views/profile'], function (profileView) {
-        profileView.render();
       });
     },
     infoDevelopers: function() {
@@ -86,12 +67,6 @@ define([
   var initialize = function(){
     var app_router = new AppRouter;
     Backbone.router = app_router;
-    Backbone.history.start();
-    setTimeout(function() {
-      var fadeTime = 1000;
-      $('#triCanvas').animate({"opacity": 0.25}, fadeTime);
-      $('#body').fadeIn(fadeTime);
-    }, 3 * 1000);
   };
   Bus.on("setTitle", function (title) {
     $("title").html("pinpoint.io - " + title);

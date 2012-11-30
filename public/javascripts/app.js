@@ -6,8 +6,11 @@ define([
        'models/session',
        'router',
        'views/main'
-], function($, _, Backbone, Bus, Session, Router, mainView) {
+], function($, _, Backbone, Bus, Session, Router, MainView) {
   var initialize = function() {
+    var mainView = new MainView;
+    mainView.render();
+
     Session.initialize({
       setUp: function(model) {
         console.log('validSessionAuth');

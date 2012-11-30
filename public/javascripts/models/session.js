@@ -46,7 +46,7 @@ define([
       });
     },
     logout: function (callback) {
-      this.id = 1;  // All Backbone models need an Id TODO
+      this.id = 1;  // TODO: All Backbone models need an id
       this.destroy({
         success: function (model, res) {
           model.clear();
@@ -57,13 +57,11 @@ define([
     },
     check: function (callback) {
       callback({}, null);
-      /*
       this.fetch({
         success: function (model, res) {
           callback(res);
         }
       });
-      */
     },
     checkAuth: function () {
       return this.get('auth');

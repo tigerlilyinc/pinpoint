@@ -1,14 +1,14 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'bus',
-  'models/session',
-  'text!templates/login.html',
-  'jquery_serialize'
+       'jquery',
+       'underscore',
+       'backbone',
+       'bus',
+       'models/session',
+       'text!templates/login.html',
+       'jquery_serialize'
 ], function ($, _, Backbone, Bus, Session, loginTemplate) {
   var loginView = Backbone.View.extend({
-    el: $('#body'),
+    el: $('#content'),
     render: function () {
       this.$el.html(_.template(loginTemplate));
     },
@@ -16,8 +16,6 @@ define([
       'submit .login-form': 'login'
     },
     login: function() {
-      Bus.trigger('validSessionAuth');
-      /*
       var that = this;
       var creds = $('.login-form').serializeObject();
       Session.login(creds, function (data) {
@@ -25,7 +23,6 @@ define([
           $('.login-errors', that.el).hide().html(_.template(loginErrorsTemplate, {message: 'Incorrect username/password.'})).slideDown(200);
         }
       });
-      */
       return false;
     }
   });
