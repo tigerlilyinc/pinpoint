@@ -2,7 +2,7 @@ define([
        'jquery',
        'underscore',
        'backbone',
-       'text!templates/info.html',
+       'text!templates/home.html'
 ], function ($, _, Backbone, template) {
   var view = Backbone.View.extend({
     el: $('#content'),

@@ -10,19 +10,10 @@ define([
       'login': 'login',
       'logout': 'logout',
 
+      'home': 'home',
+
       // Default
       '*default': 'default'
-    },
-    login: function () {
-      Bus.trigger('setTitle', "Login");
-      var that = this;
-      require(['views/login'], function (loginView) {
-        if (!Session.checkAuth()) {
-          loginView.render();
-        } else {
-          window.location = '#';
-        }
-      });
     },
     logout: function() {
       var that = this;
@@ -30,6 +21,14 @@ define([
         Session.logout(function() {
           window.location = '#';
         });
+      });
+    },
+    home: function() {
+      Bus.trigger('setTitle', 'Home');
+      require(['views/home'], function (View) {
+        console.log("home require");
+        var view = new View;
+        view.render();
       });
     },
     matches: function() {
@@ -53,18 +52,16 @@ define([
       });
     },
     default: function() {
+      console.log("default");
       if (Session.checkAuth()) {
-        this.matches();
+        this.home();
       } else {
-        require(['views/info'], function (InfoView) {
-          var infoView = new InfoView;
-          infoView.render();
-        });
+        window.location = "#";
       }
     }
   });
 
-  var initialize = function(){
+  var initialize = function() {
     var app_router = new AppRouter;
     Backbone.router = app_router;
   };

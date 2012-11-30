@@ -2,16 +2,14 @@ define([
        'jquery',
        'underscore',
        'backbone',
-       'bus',
-       'models/session',
-       'text!templates/main.html',
-], function ($, _, Backbone, Bus, Session, mainTemplate) {
-  var mainView = Backbone.View.extend({
+       'text!templates/main.html'
+], function ($, _, Backbone, template) {
+  var view = Backbone.View.extend({
     el: $('#body'),
     render: function () {
-      this.$el.html(_.template(mainTemplate));
+      this.$el.html(_.template(template));
     }
   });
-  return mainView;
+  return view;
 });
 
