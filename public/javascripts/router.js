@@ -26,7 +26,6 @@ define([
     home: function() {
       Bus.trigger('setTitle', 'Home');
       require(['views/home'], function (View) {
-        console.log("home require");
         var view = new View;
         view.render();
       });
