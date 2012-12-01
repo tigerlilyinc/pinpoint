@@ -5,5 +5,7 @@ Pinpoint::Application.routes.draw do
     post "sessions", :to => "sessions#create"
     delete "sessions", :to => "sessions#destroy"
   end
+
+  root :to => "home#index"
 end
 

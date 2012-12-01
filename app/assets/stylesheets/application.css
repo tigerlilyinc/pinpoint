@@ -11,3 +11,34 @@
  *= require_self
  *= require_tree .
 */
+
+body {
+  font-family: "promixa-nova", Helvetica, Arial, Verdana, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  background-color: #fff;
+  color: #888;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, h7, .cronos {
+  font-family: "cronos-pro-subhead";
+  font-weight: 300;
+}
+
+a {
+  color: #888;
+  text-decoration: none;
+  outline: none;
+}
+
+#header {
+  border-bottom: 1px solid black;
+}
+
+#footer {
+  border-top: 1px solid black;
+}
+
