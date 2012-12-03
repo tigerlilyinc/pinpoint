@@ -8,6 +8,9 @@ define([
 ], function ($, _, Backbone, MatchesCollection, template, matchesCompanyTemplate) {
   var view = Backbone.View.extend({
     el: $('#content'),
+    events: {
+      "click .show-details": "showDetails"
+    },
     initialize: function() {
       _.bindAll(this, 'render');
 
@@ -22,6 +25,18 @@ define([
       _.each(this.matchesCollection, function() {
         ul.append(_.template(matchesCompanyTemplate));
       });
+    },
+    showDetails: function() {
+      var details = this.$el.find(".details");
+      var showDetailsButton = this.$el.find(".show-details");
+      if (details.is(":visible")) {
+        showDetailsButton.addClass("green");
+        showDetailsButton.html("Show Me Details!");
+      } else {
+        showDetailsButton.removeClass("green");
+        showDetailsButton.html("Hide Details");
+      }
+      this.$el.find(".details").slideToggle();
     }
   });
   return new view;
