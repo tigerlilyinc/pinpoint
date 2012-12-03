@@ -11,6 +11,7 @@ define([
       'logout': 'logout',
 
       'home': 'home',
+      'matches': 'matches',
 
       // Default
       '*default': 'default'
@@ -34,20 +35,6 @@ define([
       Bus.trigger('setTitle', 'Matches');
       require(['views/matches'], function (matchesView) {
         matchesView.render();
-      });
-    },
-    infoDevelopers: function() {
-      require(['views/info'], function (InfoView) {
-        var infoView = new InfoView;
-        infoView.render();
-        infoView.show("developers");
-      });
-    },
-    infoCompanies: function() {
-      require(['views/info'], function (InfoView) {
-        var infoView = new InfoView;
-        infoView.render();
-        infoView.show("companies");
       });
     },
     default: function() {

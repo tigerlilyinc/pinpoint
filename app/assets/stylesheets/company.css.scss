@@ -1,10 +1,12 @@
-// Place all the styles related to the Company controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.home {
+.matches {
   li.company {
     position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed black;
+    &:last-child {
+      border-bottom: 0px;
+    }
     .logo {
       float: left;
       margin-top: 0px;
@@ -38,7 +40,7 @@
     }
     .cta {
       position: absolute;
-      top: 0px;
+      top: 30px;
       right: 0px;
       width: 160px;
       text-align: center;
