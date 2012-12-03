@@ -1,0 +1,46 @@
+ul, li {
+  margin: 0px;
+  padding: 0px;
+}
+
+.l-left {
+  float: left;
+}
+
+.l-right {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+  height: 0px;
+  width: 0px;
+  *zoom: 1;
+  &:before, &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.container {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul.l-horizontal-list {
+  li {
+    list-style-type: none;
+    float: left;
+  }
+}
+

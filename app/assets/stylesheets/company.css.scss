@@ -1,3 +1,51 @@
 // Place all the styles related to the Company controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home {
+  li.company {
+    position: relative;
+    .logo {
+      float: left;
+      margin-top: 0px;
+      width: 100px;
+      height: 100px;
+    }
+    .main {
+      float: left;
+      width: 625px;
+      padding-left: 20px;
+      padding-right: 170px;
+      h2 {
+        margin-top: 0px;
+      }
+      .tags {
+        margin-top: 10px;
+        li {
+          padding: 4px 8px;
+          margin-right: 10px;
+          border: 1px solid #eee;
+        }
+      }
+      .badges {
+        margin-top: 10px;
+        img {
+          width: 50px;
+          height: 50px;
+          padding-right: 10px;
+        }
+      }
+    }
+    .cta {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 160px;
+      text-align: center;
+      button {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
