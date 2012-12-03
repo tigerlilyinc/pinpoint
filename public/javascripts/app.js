@@ -22,7 +22,11 @@ define([
     Bus.on('invalidSessionAuth', this.gotoLogin, this);
 
     Bus.on('validSessionAuth', function() {
-      Backbone.history.start();
+      try {
+        Backbone.history.start()
+      } catch(err) {
+        Backbone.history.loadUrl()
+      }
     }, this);
 
     Session.initialize({
