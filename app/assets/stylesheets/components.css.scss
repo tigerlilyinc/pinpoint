@@ -1,0 +1,14 @@
+ul.tags {
+  li {
+    padding: 4px 8px;
+    margin-right: 10px;
+    border: 1px solid #eee;
+
+    &.is-active {
+      background-color: #D5FFCD;
+      border: 1px solid #000000;
+      color: #000000;
+    }
+  }
+}
+

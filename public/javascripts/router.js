@@ -12,6 +12,7 @@ define([
 
       'home': 'home',
       'matches': 'matches',
+      'profile': 'profile',
 
       // Default
       '*default': 'default'
@@ -35,6 +36,13 @@ define([
       Bus.trigger('setTitle', 'Matches');
       require(['views/matches'], function (matchesView) {
         matchesView.render();
+      });
+    },
+    profile: function() {
+      Bus.trigger('setTitle', 'Profile');
+      require(['views/profile'], function (View) {
+        var view = new View;
+        view.render();
       });
     },
     default: function() {
