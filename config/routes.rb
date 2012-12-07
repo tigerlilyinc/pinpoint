@@ -6,6 +6,8 @@ Pinpoint::Application.routes.draw do
     delete "sessions", :to => "sessions#destroy"
   end
 
+  resources :tags, :only => :index
+
   root :to => "home#index"
 end
 

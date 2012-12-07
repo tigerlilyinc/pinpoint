@@ -1,2 +1,2 @@
-class InterestDecision < ActiveRecord::Base
-end
+class InterestDecision < ActiveRecord::Base; end
+

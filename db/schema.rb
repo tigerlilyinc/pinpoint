@@ -11,12 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125205623) do
-
-  create_table "candidate_skills", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20121206195519) do
 
   create_table "candidates", :force => true do |t|
     t.string   "name",                          :null => false
@@ -38,21 +33,37 @@ ActiveRecord::Schema.define(:version => 20121125205623) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "company_skills", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "interest_decisions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "skill_tags", :force => true do |t|
+  create_table "leads", :force => true do |t|
+    t.string "name"
+    t.string "email"
+    t.text   "notes"
+    t.string "status"
+  end
+
+  add_index "leads", ["email"], :name => "index_leads_on_email", :unique => true
+  add_index "leads", ["name"], :name => "index_leads_on_name"
+
+  create_table "tags", :force => true do |t|
     t.string   "value",      :default => "", :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "type"
   end
+
+  create_table "user_tags", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_tags", ["tag_id"], :name => "index_user_tags_on_tag_id"
+  add_index "user_tags", ["user_id"], :name => "index_user_tags_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
