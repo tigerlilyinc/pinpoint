@@ -45,6 +45,12 @@ define([
       positionTags.each(function(tag) {
         positionsUl.append(_.template(tagTemplate, {model: tag}));
       });
+
+      var user_tags = window.pinpoint.user.user_tags;
+      for (var i=0; i<user_tags.length; i++) {
+        var user_tag = user_tags[i];
+        this.$el.find("[data-id=" + user_tag.tag_id + "]").addClass("is-active");
+      }
     }
   });
   return view;

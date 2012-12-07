@@ -9,6 +9,8 @@ define([
        'views/login',
 ], function($, _, Backbone, Bus, Session, Router, MainView, LoginView) {
   var initialize = function() {
+    window.pinpoint = {};
+
     var that = this;
     var mainView = new MainView;
     mainView.render();

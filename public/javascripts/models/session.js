@@ -41,6 +41,7 @@ define([
     login: function (credentials, callback) {
       this.save(credentials, {
         success: function (model, res) {
+          window.pinpoint.user = model.get("user");
           callback(res);
         }
       });
@@ -49,6 +50,7 @@ define([
       this.id = 1;  // TODO: All Backbone models need an id
       this.destroy({
         success: function (model, res) {
+          window.pinpoint.user = null;
           model.clear();
           model.id = null;
           callback(res);
@@ -59,6 +61,7 @@ define([
       callback({}, null);
       this.fetch({
         success: function (model, res) {
+          window.pinpoint.user = model.get("user");
           callback(res);
         }
       });
