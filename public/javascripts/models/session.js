@@ -19,7 +19,7 @@ define([
         ajaxOptions.dataType = 'json';
 
         ajaxOptions.success = function (data) {
-          if (typeof data.auth !== 'undefined') {
+          if (data !== null && typeof data.auth !== 'undefined') {
             if (data.auth == false) {
               options.tearDown();
               model.set({auth: false});
@@ -70,6 +70,6 @@ define([
       return this.get('auth');
     }
   });
-  return new SessionModel();
+  return SessionModel;
 });
 

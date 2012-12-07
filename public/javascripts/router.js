@@ -8,7 +8,6 @@ define([
   var AppRouter = Backbone.Router.extend({
     routes: {
       'login': 'login',
-      'logout': 'logout',
 
       'home': 'home',
       'matches': 'matches',
@@ -16,14 +15,6 @@ define([
 
       // Default
       '*default': 'default'
-    },
-    logout: function() {
-      var that = this;
-      $('.main').fadeOut(200, function() {
-        Session.logout(function() {
-          window.location = '#';
-        });
-      });
     },
     home: function() {
       Bus.trigger('setTitle', 'Home');
@@ -34,8 +25,9 @@ define([
     },
     matches: function() {
       Bus.trigger('setTitle', 'Matches');
-      require(['views/matches'], function (matchesView) {
-        matchesView.render();
+      require(['views/matches'], function (View) {
+        var view = new View;
+        view.render();
       });
     },
     profile: function() {
@@ -47,7 +39,8 @@ define([
     },
     default: function() {
       console.log("default");
-      if (Session.checkAuth()) {
+      var session = new Session;
+      if (session.checkAuth()) {
         this.home();
       } else {
         window.location = "#";

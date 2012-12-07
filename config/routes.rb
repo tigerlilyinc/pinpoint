@@ -7,6 +7,7 @@ Pinpoint::Application.routes.draw do
   end
 
   resources :tags, :only => :index
+  resources :user_tags, :only => [:create, :destroy]
 
   root :to => "home#index"
 end

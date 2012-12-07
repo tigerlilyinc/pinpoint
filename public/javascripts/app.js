@@ -31,7 +31,8 @@ define([
       }
     }, this);
 
-    Session.initialize({
+    var session = new Session;
+    session.initialize({
       setUp: function(model) {
         console.log('validSessionAuth');
         Bus.trigger('validSessionAuth');
@@ -41,7 +42,7 @@ define([
         Bus.trigger('invalidSessionAuth');
       }
     });
-    Session.check(function() {
+    session.check(function() {
       Router.initialize();
     });
   }

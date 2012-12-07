@@ -39,6 +39,6 @@ define([
       this.$el.find(".details").slideToggle();
     }
   });
-  return new view;
+  return view;
 });
 

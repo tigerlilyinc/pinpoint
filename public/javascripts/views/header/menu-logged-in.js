@@ -19,7 +19,8 @@ define([
       this.$el.html(_.template(template));
     },
     logout: function() {
-      Session.logout(function (data) {
+      var session = new Session;
+      session.logout(function (data) {
         Backbone.router.navigate('#', {trigger: true});
       });
       return false;

@@ -19,7 +19,8 @@ define([
     login: function() {
       var that = this;
       var creds = {user: $('.login-form').serializeObject()};
-      Session.login(creds, function (data) {
+      var session = new Session;
+      session.login(creds, function (data) {
         if (!data.user) {
           $('.login-errors', that.el).hide().html(_.template(loginErrorsTemplate, {message: 'Incorrect username/password.'})).slideDown(200);
         }
