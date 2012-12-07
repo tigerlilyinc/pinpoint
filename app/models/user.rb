@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
   has_many :industries, :through => :user_tags, :class_name => "Tag::Industry", :source => :tag
   has_many :positions, :through => :user_tags, :class_name => "Tag::Position", :source => :tag
 
+  before_save :ensure_authentication_token
+
   def as_json(options = {})
-    super(options.merge({ :include => :user_tags }))
+    { authentication_token: authentication_token }.merge super(options.merge({ :include => :user_tags }))
   end
 end
 

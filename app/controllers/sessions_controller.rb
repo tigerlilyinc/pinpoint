@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-  skip_before_filter :verify_authenticity_token # TODO: Remove this
+  skip_before_filter :authenticate_user
 
   def show
     if user_signed_in?

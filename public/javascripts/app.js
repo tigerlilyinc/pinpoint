@@ -11,6 +11,20 @@ define([
   var initialize = function() {
     window.pinpoint = {};
 
+    Backbone.old_sync = Backbone.sync
+    Backbone.sync = function(method, model, options) {
+      var new_options =  _.extend({
+        beforeSend: function(xhr) {
+          var csrfToken = $('meta[name="csrf-token"]').attr('content');
+          if (csrfToken) xhr.setRequestHeader('X-CSRF-Token', csrfToken);
+
+          var authToken = $('meta[name="auth-token"]').attr('content');
+          if (authToken) xhr.setRequestHeader('X-Auth-Token', authToken);
+        }
+      }, options)
+      Backbone.old_sync(method, model, new_options);
+    };
+
     var that = this;
     var mainView = new MainView;
     mainView.render();
@@ -32,16 +46,6 @@ define([
     }, this);
 
     var session = new Session;
-    session.initialize({
-      setUp: function(model) {
-        console.log('validSessionAuth');
-        Bus.trigger('validSessionAuth');
-      },
-      tearDown: function() {
-        console.log('invalidSessionAuth');
-        Bus.trigger('invalidSessionAuth');
-      }
-    });
     session.check(function() {
       Router.initialize();
     });

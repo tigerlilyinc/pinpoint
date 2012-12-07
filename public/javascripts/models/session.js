@@ -1,56 +1,26 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function ($, _, Backbone) {
+  'backbone',
+  'bus'
+], function ($, _, Backbone, Bus) {
   var SessionModel = Backbone.Model.extend({
     url: '/sessions',
-    defaults: {
-      setUp: function () {},
-      tearDown: function () {}
-    },
-    initialize: function (options) {
-      var model = this;
-      model.set({auth: false});
-      var auth = this.get('auth');
-      options = _.extend({}, this.defaults, options);
-      $.ajaxPrefilter(function (ajaxOptions) {
-        var success = ajaxOptions.success;
-        ajaxOptions.dataType = 'json';
-
-        ajaxOptions.success = function (data) {
-          if (data !== null && typeof data.auth !== 'undefined') {
-            if (data.auth == false) {
-              options.tearDown();
-              model.set({auth: false});
-              model.id = null;
-              model.clear();
-              $.ajaxSetup({});
-            } else if (data.auth == true && auth == false) {
-              model.set(data);
-              options.setUp(model);
-            }
-          }
-
-          if (success) {
-            success(data);
-          }
-        };
-      });
-    },
     login: function (credentials, callback) {
+      var that = this;
       this.save(credentials, {
         success: function (model, res) {
-          window.pinpoint.user = model.get("user");
+          that.doTriggers(model);
           callback(res);
         }
       });
     },
     logout: function (callback) {
+      var that = this;
       this.id = 1;  // TODO: All Backbone models need an id
       this.destroy({
         success: function (model, res) {
-          window.pinpoint.user = null;
+          that.doTriggers(model);
           model.clear();
           model.id = null;
           callback(res);
@@ -58,16 +28,32 @@ define([
       });
     },
     check: function (callback) {
+      var that = this;
       callback({}, null);
       this.fetch({
         success: function (model, res) {
-          window.pinpoint.user = model.get("user");
+          that.doTriggers(model);
           callback(res);
         }
       });
     },
     checkAuth: function () {
-      return this.get('auth');
+      return ( $('meta[name="auth-token"]').attr('content') ? true : false );
+    },
+    doTriggers: function(model) {
+      var authTokenEl = $('meta[name="auth-token"]');
+
+      if (model.get("auth")) {
+        window.pinpoint.user = model.get("user");
+        authTokenEl.attr("content", model.get("user").authentication_token);
+        console.log('validSessionAuth');
+        Bus.trigger('validSessionAuth');
+      } else {
+        window.pinpoint.user = null;
+        authTokenEl.attr("content", "");
+        console.log('invalidSessionAuth');
+        Bus.trigger('invalidSessionAuth');
+      }
     }
   });
   return SessionModel;
