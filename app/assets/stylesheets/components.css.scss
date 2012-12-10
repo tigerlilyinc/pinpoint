@@ -4,11 +4,21 @@ ul.tags {
     margin-right: 10px;
     border: 1px solid #eee;
 
-    &.is-active {
-      background-color: #D5FFCD;
+    &:hover {
       border: 1px solid #000000;
-      color: #000000;
+      background-color: #D5FFCD;
+      opacity: .5;
     }
+
+    &.is-active {
+      border: 1px solid #000000;
+      background-color: #D5FFCD;
+      color: #000000;
+      &:hover {
+            opacity: 1;
+          }
+    }
+
   }
 }
 
