@@ -11,7 +11,17 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
 
   def as_json(options = {})
-    { authentication_token: authentication_token }.merge super(options.merge({ :include => :user_tags }))
+    { authentication_token: authentication_token }.merge super
+  end
+
+  def serializable_hash(options)
+    options ||= {}
+
+    options = {
+      :include => [ :user_tags ]
+    }.update(options)
+
+    super(options)
   end
 end
 

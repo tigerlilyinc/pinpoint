@@ -3,7 +3,7 @@
 
 u = User.create!(:email => "justinpincar@gmail.com", :password => "asdfasdf")
 
-skill_tags = ["C", "C++", "Ruby", "Perl", "Python", "Ruby/Rails", "Node.js", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Memcached"]
+skill_tags = ["C", "C++", "Ruby", "Perl", "Python", "Ruby/Rails", "Node.js", "MySQL", "PostgreSQL", "MongoDB", "Redis", "RSpec", "Memcached"]
 skill_tags.each do |tag|
   Tag::Skill.create!(:value => tag)
 end
@@ -21,4 +21,38 @@ end
 u.skills << Tag::Skill.order("random()").limit(6)
 u.industries << Tag::Industry.order("random()").limit(4)
 u.positions << Tag::Position.order("random()").limit(2)
+
+tag_proc = Proc.new { |tag| Tag.find_by_value(tag) }
+
+companies = [
+  { :name => "UniversityNow",
+    :email => "todd@unow.com",
+    :description => "UniversityNow was built and supported by a team of visionaries who could see the future and believe in the right that everyone has to higher education. Learn more about the UniversityNow team.",
+    :size => 40,
+    :dev_team_size => 3,
+    :requisitions => [ { :name => "Full-stack Ruby on Rails Developer",
+                         :description => "We're looking for someone to take ownership across the board on various tasks.",
+                         :skills => [ "Ruby/Rails", "PostgreSQL" ],
+                         :positions => [ "Junior", "Senior" ]},
+                        { :name => "QA Developer",
+                          :description => "Love testing? We need someone to ensure our code goes out bug free!",
+                          :skills => [ "Ruby/Rails", "RSpec", "PostgreSQL" ],
+                          :positions => [ "Junior", "Senior" ] } ] }
+]
+
+companies.each do |company_data|
+  company = Company.create!(:name => company_data[:name],
+                            :email => company_data[:email],
+                            :description => company_data[:description],
+                            :size => company_data[:size],
+                            :dev_team_size => company_data[:dev_team_size])
+  company_data[:requisitions].each do |requisition_data|
+    skill_tags = requisition_data[:skills].map(&tag_proc)
+    position_tags = requisition_data[:positions].map(&tag_proc)
+    requisition = Requisition.create!(:company => company,
+                                      :name => requisition_data[:name],
+                                      :skills => skill_tags,
+                                      :positions => position_tags)
+  end
+end
 

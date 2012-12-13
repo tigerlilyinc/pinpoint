@@ -1,2 +1,4 @@
-class Company < ActiveRecord::Base; end
+class Company < ActiveRecord::Base
+  has_many :requisitions
+end
 

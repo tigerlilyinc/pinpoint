@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207234428) do
+ActiveRecord::Schema.define(:version => 20121213185741) do
 
   create_table "candidates", :force => true do |t|
     t.string   "name",                          :null => false
@@ -47,6 +47,26 @@ ActiveRecord::Schema.define(:version => 20121207234428) do
 
   add_index "leads", ["email"], :name => "index_leads_on_email", :unique => true
   add_index "leads", ["name"], :name => "index_leads_on_name"
+
+  create_table "requisition_tags", :force => true do |t|
+    t.integer  "requisition_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "requisition_tags", ["requisition_id"], :name => "index_requisition_tags_on_requisition_id"
+  add_index "requisition_tags", ["tag_id"], :name => "index_requisition_tags_on_tag_id"
+
+  create_table "requisitions", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "requisitions", ["company_id"], :name => "index_requisitions_on_company_id"
 
   create_table "tags", :force => true do |t|
     t.string   "value",      :default => "", :null => false
