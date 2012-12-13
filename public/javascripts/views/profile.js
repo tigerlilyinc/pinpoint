@@ -2,15 +2,17 @@ define([
        'jquery',
        'underscore',
        'backbone',
+       'models/user',
        'models/user_tag',
        'collections/tags',
        'text!templates/profile.html',
        'text!templates/tags/tag.html',
-], function ($, _, Backbone, UserTag, TagsCollection, template, tagTemplate) {
+], function ($, _, Backbone, User, UserTag, TagsCollection, template, tagTemplate) {
   var view = Backbone.View.extend({
     el: $('#content'),
     events: {
-      "click .tags li": "toggleTag"
+      "click .tags li": "toggleTag",
+      "keyup .user_field": "saveUserInfo"
     },
     initialize: function() {
       _.bindAll(this, 'render');
@@ -21,6 +23,14 @@ define([
     },
     render: function() {
       this.$el.html(_.template(template));
+
+      var userName = window.pinpoint.user.name;
+      var nameInput = this.$el.find("input[name=inputName]");
+      nameInput.val(userName);
+
+      var email = window.pinpoint.user.email;
+      var emailInput = this.$el.find("input[name=inputEmail]");
+      emailInput.val(email);
 
       var skillTags = _(this.tagsCollection.filter(function(tag) {
         return (tag.get("type") == "Tag::Skill");
@@ -76,6 +86,12 @@ define([
       }
 
       tagEl.toggleClass("is-active");
+    },
+    saveUserInfo: function (e) {
+      var currentUser = new User(window.pinpoint.user);
+      currentUser.set({email: this.$el.find("input[name=inputEmail]").val()});
+      currentUser.set({name: this.$el.find("input[name=inputName]").val()});
+      currentUser.save();
     }
   });
   return view;

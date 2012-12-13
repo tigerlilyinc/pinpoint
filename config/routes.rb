@@ -1,9 +1,10 @@
 Pinpoint::Application.routes.draw do
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations"}
   devise_scope :user do
     get "sessions", :to => "sessions#show"
     post "sessions", :to => "sessions#create"
     delete "sessions", :to => "sessions#destroy"
+    put "users/:id", :to => "registrations#update"
   end
 
   resources :tags, :only => :index

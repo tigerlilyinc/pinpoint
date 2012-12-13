@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'awesome_print'
+gem 'debugger'
 gem 'devise', '~> 2.1.2'
 gem 'jquery-rails'
 gem 'pg'
