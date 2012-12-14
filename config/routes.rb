@@ -5,6 +5,7 @@ Pinpoint::Application.routes.draw do
     post "sessions", :to => "sessions#create"
     delete "sessions", :to => "sessions#destroy"
     put "users/:id", :to => "registrations#update"
+    post "users", :to => "registrations#create"
   end
 
   resources :matches, :only => :index
