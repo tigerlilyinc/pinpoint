@@ -22,8 +22,8 @@ define([
       this.$el.html(_.template(template));
       var ul = this.$el.find(".matches > ul");
       ul.empty();
-      _.each(this.matchesCollection, function() {
-        ul.append(_.template(matchesCompanyTemplate));
+      this.matchesCollection.each(function(match) {
+        ul.append(_.template(matchesCompanyTemplate, {match: match}));
       });
     },
     showDetails: function() {

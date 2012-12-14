@@ -7,6 +7,7 @@ Pinpoint::Application.routes.draw do
     put "users/:id", :to => "registrations#update"
   end
 
+  resources :matches, :only => :index
   resources :tags, :only => :index
   resources :user_tags, :only => [:create, :destroy]
 

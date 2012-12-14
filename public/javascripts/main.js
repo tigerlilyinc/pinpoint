@@ -10,6 +10,9 @@ require.config({
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
     },
+    'jquery_distinct': {
+      deps: ['jquery']
+    },
     'jquery_highlight': {
       deps: ['jquery']
     },
@@ -20,6 +23,7 @@ require.config({
   paths: {
     etch: 'libs/etch/etch',
     jquery: 'libs/jquery/jquery-min',
+    jquery_distinct: 'libs/jquery/jquery-distinct',
     jquery_highlight: 'libs/jquery/jquery-highlight',
     jquery_serialize: 'libs/jquery/jquery-serialize',
     underscore: 'libs/underscore/underscore-min',

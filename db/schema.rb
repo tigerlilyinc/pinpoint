@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213185741) do
+ActiveRecord::Schema.define(:version => 20121214183342) do
 
   create_table "candidates", :force => true do |t|
     t.string   "name",                          :null => false
@@ -33,10 +33,25 @@ ActiveRecord::Schema.define(:version => 20121213185741) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "interest_decisions", :force => true do |t|
+  create_table "company_tags", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "tag_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "company_tags", ["company_id"], :name => "index_company_tags_on_company_id"
+  add_index "company_tags", ["tag_id"], :name => "index_company_tags_on_tag_id"
+
+  create_table "interest_decisions", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "requisition_id"
+    t.integer  "user_id"
+  end
+
+  add_index "interest_decisions", ["requisition_id"], :name => "index_interest_decisions_on_requisition_id"
+  add_index "interest_decisions", ["user_id"], :name => "index_interest_decisions_on_user_id"
 
   create_table "leads", :force => true do |t|
     t.string "name"
