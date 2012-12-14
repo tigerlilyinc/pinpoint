@@ -11,6 +11,7 @@ define([
 
       'home': 'home',
       'matches': 'matches',
+      'activity': 'activity',
       'profile': 'profile',
 
       // Default
@@ -31,6 +32,14 @@ define([
       var that = this;
       Bus.trigger('setTitle', 'Matches');
       require(['views/matches'], function (View) {
+        var view = new View;
+        that.mainView.showView(view);
+      });
+    },
+    activity: function() {
+      var that = this;
+      Bus.trigger('setTitle', 'Activity');
+      require(['views/activity'], function (View) {
         var view = new View;
         that.mainView.showView(view);
       });
