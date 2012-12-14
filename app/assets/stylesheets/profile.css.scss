@@ -9,6 +9,11 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+
+      &:hover {
+        border: 1px solid #000000;
+        background-color: #D5FFCD;
+      }
     }
   }
 }
