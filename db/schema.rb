@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20121214183342) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "authentication_token"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
