@@ -14,6 +14,18 @@ define([
     },
     render: function () {
       this.$el.html(_.template(template));
+    },
+    showView: function(view) {
+      if (this.currentView) {
+        this.currentView.unbind();
+        this.currentView.undelegateEvents();
+        if (this.currentView.onClose) {
+          this.currentView.onClose();
+        }
+        this.currentView.$el.empty();
+      }
+      this.currentView = view;
+      this.currentView.render();
     }
   });
   return view;

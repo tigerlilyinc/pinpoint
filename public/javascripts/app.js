@@ -48,7 +48,9 @@ define([
 
     var session = new Session;
     session.check(function() {
-      Router.initialize();
+      Router.initialize({
+        "mainView": mainView
+      });
     });
   }
 

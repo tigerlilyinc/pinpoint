@@ -16,25 +16,31 @@ define([
       // Default
       '*default': 'default'
     },
+    initialize: function(options) {
+      this.mainView = options.mainView;
+    },
     home: function() {
+      var that = this;
       Bus.trigger('setTitle', 'Home');
       require(['views/home'], function (View) {
         var view = new View;
-        view.render();
+        that.mainView.showView(view);
       });
     },
     matches: function() {
+      var that = this;
       Bus.trigger('setTitle', 'Matches');
       require(['views/matches'], function (View) {
         var view = new View;
-        view.render();
+        that.mainView.showView(view);
       });
     },
     profile: function() {
+      var that = this;
       Bus.trigger('setTitle', 'Profile');
       require(['views/profile'], function (View) {
         var view = new View;
-        view.render();
+        that.mainView.showView(view);
       });
     },
     default: function() {
@@ -48,8 +54,8 @@ define([
     }
   });
 
-  var initialize = function() {
-    var app_router = new AppRouter;
+  var initialize = function(options) {
+    var app_router = new AppRouter(options);
     Backbone.router = app_router;
   };
   Bus.on("setTitle", function (title) {

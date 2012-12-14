@@ -18,6 +18,9 @@ define([
       this.matchesCollection.bind('reset', this.render);
       this.matchesCollection.fetch();
     },
+    onClose: function() {
+      this.matchesCollection.unbind('reset', this.render);
+    },
     render: function() {
       this.$el.html(_.template(template));
       var ul = this.$el.find(".matches > ul");
