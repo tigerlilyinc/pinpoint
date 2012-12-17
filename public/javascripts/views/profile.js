@@ -12,7 +12,8 @@ define([
     el: $('#content'),
     events: {
       "click .tags li": "toggleTag",
-      "keyup .user_field": "saveUserInfo"
+      "keyup .user_field": "saveUserInfo",
+      "click input[name=involvement]": "saveUserInfo"
     },
     initialize: function() {
       _.bindAll(this, 'render');
@@ -31,6 +32,10 @@ define([
       var email = window.pinpoint.user.email;
       var emailInput = this.$el.find("input[name=inputEmail]");
       emailInput.val(email);
+
+      var contactMe = window.pinpoint.user.contact_me;
+      var contactInput = this.$el.find("input[name=involvement]");
+      contactInput.prop("checked", contactMe);
 
       var skillTags = _(this.tagsCollection.filter(function(tag) {
         return (tag.get("type") == "Tag::Skill");
@@ -91,6 +96,7 @@ define([
       var currentUser = new User(window.pinpoint.user);
       currentUser.set({email: this.$el.find("input[name=inputEmail]").val()});
       currentUser.set({name: this.$el.find("input[name=inputName]").val()});
+      currentUser.set({contact_me: this.$el.find("input[name=involvement]").is(':checked')});
       currentUser.save();
     }
   });
