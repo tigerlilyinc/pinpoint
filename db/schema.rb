@@ -11,16 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214183342) do
+ActiveRecord::Schema.define(:version => 20121217183647) do
 
-  create_table "candidates", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.string   "email",                         :null => false
-    t.integer  "target_salary", :default => 0
-    t.string   "linkedin",      :default => "", :null => false
-    t.string   "github",        :default => "", :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+  create_table "candidate_skills", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "companies", :force => true do |t|
@@ -31,6 +26,11 @@ ActiveRecord::Schema.define(:version => 20121214183342) do
     t.integer  "dev_team_size"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "company_skills", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "company_tags", :force => true do |t|
@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(:version => 20121214183342) do
 
   add_index "requisitions", ["company_id"], :name => "index_requisitions_on_company_id"
 
+  create_table "skill_tags", :force => true do |t|
+    t.string   "value",      :default => "", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "value",      :default => "", :null => false
     t.datetime "created_at",                 :null => false
@@ -115,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20121214183342) do
     t.datetime "updated_at",                             :null => false
     t.string   "authentication_token"
     t.string   "name"
+    t.boolean  "contact_me"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
