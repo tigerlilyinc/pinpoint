@@ -29,16 +29,22 @@ define([
       });
       return false;
     },
-    createUser: function(e) {
-      e.preventDefault();
-      var name = this.$el.find('.signup-form input[name=name]').val();
-      var email = this.$el.find('.signup-form input[name=email]').val();
-      var password = this.$el.find('.signup-form input[name=password]').val();
-      var user = new User({ user: { name: name, email: email, password: password}});
-      user.save();
+    createUser: function() {
+      var name = this.$el.find('input[name=name]').val();
+      var email = this.$el.find('input[name=s_email]').val();
+      var password = this.$el.find('input[name=s_password]').val();
+      var valid_email = ( email.search(/@/) > 0 )
+      if(name && email && password) {
+        var user = new User({ name: name, email: email, password: password});
+        user.save();
+      } else if (!valid_email) {
+        $('.signup-errors', this.el).hide().html(_.template(loginErrorsTemplate, {message: 'Please provide a valid email address.'})).slideDown(200);
+      }
+      else {
+        $('.signup-errors', this.el).hide().html(_.template(loginErrorsTemplate, {message: 'You must provide a valid name, email and password.'})).slideDown(200);
+      }
       return false;
     }
-
   });
   return loginView;
 });

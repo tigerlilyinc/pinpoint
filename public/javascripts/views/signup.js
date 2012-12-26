@@ -16,14 +16,17 @@ define([
     events: {
       'submit .signup-form': 'signup'
     },
-    createUser: function() {
-       var name = this.$el.find('input[name=name]').val();
-       var email = this.$el.find('input[name=email]').val();
-       var password = this.$el.find('input[name=password]').val();
-       var user = new User({ name: name, email: email, password: password});
-       user.save();
+    login: function() {
+      var that = this;
+      var creds = {user: $('.login-form').serializeObject()};
+      var session = new Session;
+      session.login(creds, function (data) {
+        if (!data.user) {
+          $('.signup-errors', that.el).hide().html(_.template(loginErrorsTemplate, {message: 'Incorrect username/password.'})).slideDown(200);
+        }
+      });
       return false;
-    }
+    },
   });
   return signupView;
 });
