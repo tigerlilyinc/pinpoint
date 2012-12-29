@@ -1,3 +1,4 @@
+<div id="sign-in">
 <div class="login-container">
   <h2>Welcome back to pinpoint.io! Your home away from homepage.</h2>
   <form class="login-form form-horizontal">
@@ -37,9 +38,13 @@
   </form>
 <a id="signup_b" style="cursor:pointer" onclick="toggle_signup()">Already a member? Sign in</a>
 </div>
+</div>
 <script>
   var toggle_signup = function() {
-    $('.login-container, .signup-container').toggle();
+    var hid = $('#sign-in').children('div :hidden');
+    var vis = $('#sign-in').children('div :visible');
+    vis.hide();
+    hid.fadeToggle("slow", "linear");
   }
 </script>
 
