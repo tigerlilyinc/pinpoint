@@ -42,7 +42,7 @@ define([
       var password = this.$el.find('input[name=s_password]').val();
       var valid_email = ( email.search(/@/) > 0 )
       if(name && email && password) {
-        var user = new User({ name: name, email: email, password: password});
+        var user = new User({user: {name: name, email: email, password: password}});
         user.save();
       } else if (!valid_email) {
         $('.signup-errors', this.el).hide().html(_.template(loginErrorsTemplate, {message: 'Please provide a valid email address.'})).slideDown(200);
