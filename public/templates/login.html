@@ -1,50 +1,41 @@
 <div id="sign-in">
-<div class="login-container">
-  <h2>Welcome back to pinpoint.io! Your home away from homepage.</h2>
-  <form class="login-form form-horizontal">
-    <div class="control-group">
-      <div class="login-errors"></div>
-    </div>
-    <div class="control-group">
-      <input type="text" name="email" placeholder="Email">
-    </div>
-    <div class="control-group">
-      <input type="password" name="password" placeholder="Password">
-    </div>
-    <div class="control-group">
-      <button type="submit" class="button">Sign in</button>
-    </div>
-  </form>
-<a id="signup_a" style="cursor:pointer" onclick="toggle_signup()">Not a member? Create an account</a>
-</div>
-<div class="signup-container" style="display:none;">
-  <h2>Welcome to pinpoint.io! Your new homepage.</h2>
-  <form class="signup-form form-horizontal">
-    <div class="control-group">
-      <div class="signup-errors"></div>
-    </div>
+  <div class="login-container">
+    <h2>Welcome back to pinpoint.io! Your home away from homepage.</h2>
+    <form class="login-form form-horizontal">
       <div class="control-group">
-      <input type="text" name="name" placeholder="Name">
-    </div>
-    <div class="control-group">
-      <input type="text" name="s_email" placeholder="Email">
-    </div>
-    <div class="control-group">
-      <input type="password" name="s_password" placeholder="Password">
-    </div>
-    <div class="control-group">
-      <button type="submit" class="button">Sign up</button>
-    </div>
-  </form>
-<a id="signup_b" style="cursor:pointer" onclick="toggle_signup()">Already a member? Sign in</a>
+        <div class="login-errors"></div>
+      </div>
+      <div class="control-group">
+        <input type="text" name="email" placeholder="Email">
+      </div>
+      <div class="control-group">
+        <input type="password" name="password" placeholder="Password">
+      </div>
+      <div class="control-group">
+        <button type="submit" class="button">Sign in</button>
+      </div>
+    </form>
+    <a class="signup_a clickable">Not a member? Create an account</a>
+  </div>
+  <div class="signup-container" style="display:none;">
+    <h2>Welcome to pinpoint.io! Your new homepage.</h2>
+    <form class="signup-form form-horizontal">
+      <div class="control-group">
+        <div class="signup-errors"></div>
+      </div>
+      <div class="control-group">
+        <input type="text" name="name" placeholder="Name">
+      </div>
+      <div class="control-group">
+        <input type="text" name="s_email" placeholder="Email">
+      </div>
+      <div class="control-group">
+        <input type="password" name="s_password" placeholder="Password">
+      </div>
+      <div class="control-group">
+        <button type="submit" class="button">Sign up</button>
+      </div>
+    </form>
+    <a class="signup_a clickable">Already a member? Sign in</a>
+  </div>
 </div>
-</div>
-<script>
-  var toggle_signup = function() {
-    var hid = $('#sign-in').children('div :hidden');
-    var vis = $('#sign-in').children('div :visible');
-    vis.hide();
-    hid.fadeToggle("slow", "linear");
-  }
-</script>
-

@@ -16,7 +16,8 @@ define([
     },
     events: {
       'submit .login-form': 'login',
-      'submit .signup-form': 'createUser'
+      'submit .signup-form': 'createUser',
+      'click .signup_a': 'toggleSignIn'
     },
     login: function() {
       var that = this;
@@ -28,6 +29,12 @@ define([
         }
       });
       return false;
+    },
+    toggleSignIn: function () {
+      var hid = this.$el.find('#sign-in').children('div :hidden');
+      var vis = this.$el.find('#sign-in').children('div :visible');
+      vis.hide();
+      hid.fadeToggle("slow", "linear");
     },
     createUser: function() {
       var name = this.$el.find('input[name=name]').val();
