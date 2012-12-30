@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  skip_before_filter :authenticate_user, :only => :create
+
   def update
     @current_user.update_attribute(:name, params[:name])
     @current_user.update_attribute(:email, params[:email])
