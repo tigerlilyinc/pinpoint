@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :industries, :through => :user_tags, :class_name => "Tag::Industry", :source => :tag
   has_many :positions, :through => :user_tags, :class_name => "Tag::Position", :source => :tag
 
+  has_many :interest_decisions
+
   before_save :ensure_authentication_token
 
   def as_json(options = {})

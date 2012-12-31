@@ -11,7 +11,7 @@ define([
 
       skills = [];
       _.each(this.get("interest_decisions"), function(interest_decision) {
-        _.each(interest_decision.skills, function(skill) {
+        _.each(interest_decision.requisition.skills, function(skill) {
           skills.push(skill.value);
         });
       });

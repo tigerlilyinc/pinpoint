@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-u = User.create!(:email => "justinpincar@gmail.com", :password => "asdfasdf")
+user = User.create!(:name => "Charles Xavier", :email => "user@host.test", :password => "asdfasdf")
 
 skill_tags = ["C", "C++", "Ruby", "Perl", "Python", "Ruby/Rails", "Node.js", "MySQL", "PostgreSQL", "MongoDB", "Redis", "RSpec", "Memcached"]
 skill_tags.each do |tag|
@@ -18,9 +18,9 @@ position_tags.each do |tag|
   Tag::Position.create!(:value => tag)
 end
 
-u.skills << Tag::Skill.order("random()").limit(6)
-u.industries << Tag::Industry.order("random()").limit(4)
-u.positions << Tag::Position.order("random()").limit(2)
+user.skills << Tag::Skill.order("random()").limit(6)
+user.industries << Tag::Industry.order("random()").limit(4)
+user.positions << Tag::Position.order("random()").limit(2)
 
 tag_proc = Proc.new { |tag| Tag.find_by_value(tag) }
 
@@ -56,6 +56,7 @@ companies.each do |company_data|
                                       :name => requisition_data[:name],
                                       :skills => skill_tags,
                                       :positions => position_tags)
+    interest_decision = InterestDecision.create!(:requisition => requisition, :user => user)
   end
 end
 

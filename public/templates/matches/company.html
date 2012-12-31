@@ -30,7 +30,7 @@
   </div>
   <div class="details" style="display: none;">
     <% _.each(match.get("interest_decisions"), function(interest_decision) { %>
-      <%= interest_decision.name %><br/ >
+      <%= interest_decision.requisition.name %><br/ >
     <% }) %>
   </div>
 </li>

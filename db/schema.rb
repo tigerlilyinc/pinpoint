@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217183647) do
+ActiveRecord::Schema.define(:version => 20121231015205) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",          :null => false
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(:version => 20121217183647) do
     t.datetime "updated_at",     :null => false
     t.integer  "requisition_id"
     t.integer  "user_id"
+    t.string   "disposition"
   end
 
+  add_index "interest_decisions", ["disposition"], :name => "index_interest_decisions_on_disposition"
   add_index "interest_decisions", ["requisition_id"], :name => "index_interest_decisions_on_requisition_id"
   add_index "interest_decisions", ["user_id"], :name => "index_interest_decisions_on_user_id"
 
