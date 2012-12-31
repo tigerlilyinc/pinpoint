@@ -24,13 +24,19 @@
     </div>
     <div class="cta">
       <button class="button green show-details">Show Me Details!</button>
-      <button class="button not-interested">Not Interested</button>
+      <button class="button uninterested-company">Not Interested</button>
     </div>
     <br class="clearfix" />
   </div>
   <div class="details" style="display: none;">
     <% _.each(match.get("interest_decisions"), function(interest_decision) { %>
-      <%= interest_decision.requisition.name %><br/ >
+      <div class="requisition">
+        <br />
+        <%= interest_decision.requisition.name %>
+        <button class="button green interested" data-interest-decision-id="<%= interest_decision.requisition.id %>">I'm interested!</button>
+        <button class="button uninterested" data-interest-decision-id="<%= interest_decision.requisition.id %>">Not for me</button>
+        <br/ >
+      </div>
     <% }) %>
   </div>
 </li>

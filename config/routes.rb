@@ -14,6 +14,13 @@ Pinpoint::Application.routes.draw do
     end
   end
 
+  resources :interest_decisions, :only => :none do
+    member do
+      post :interested
+      post :uninterested
+    end
+  end
+
   resources :matches, :only => :index
   resources :tags, :only => :index
   resources :user_tags, :only => [:create, :destroy]

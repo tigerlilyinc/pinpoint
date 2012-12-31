@@ -38,7 +38,17 @@ companies = [
                         { :name => "QA Developer",
                           :description => "Love testing? We need someone to ensure our code goes out bug free!",
                           :skills => [ "Ruby/Rails", "RSpec", "PostgreSQL" ],
-                          :positions => [ "Junior", "Senior" ] } ] }
+                          :positions => [ "Junior", "Senior" ] } ] },
+  { :name => "Company2",
+    :email => "contact@company2.test",
+    :description => "This is a second company description.",
+    :size => 20,
+    :dev_team_size => 4,
+    :industries => ["Mobile", "Education"],
+    :requisitions => [ { :name => "Senior MySQL DBA",
+                         :description => "Someone needs to be a boss at databases.",
+                         :skills => [ "MySQL", "Ruby/Rails" ],
+                         :positions => [ "Senior" ] } ] }
 ]
 
 companies.each do |company_data|
