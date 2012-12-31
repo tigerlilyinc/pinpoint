@@ -1,5 +1,4 @@
 class MatchesController < ApplicationController
-  # This is obviously not selecting matches - it's just to get the app up and running.
   def index
     interest_decisions = current_user.interest_decisions
 
