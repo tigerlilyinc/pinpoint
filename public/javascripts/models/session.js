@@ -11,6 +11,7 @@ define([
       this.save(credentials, {
         success: function (model, res) {
           that.doTriggers(model);
+          if(typeof res == typeof(Function))
           callback(res);
         }
       });

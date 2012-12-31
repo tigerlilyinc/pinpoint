@@ -16,7 +16,7 @@ define([
     },
     events: {
       'submit .login-form': 'login',
-      'submit .signup-form': 'createUser',
+      'submit .signup-form': 'createUserAndSignin',
       'click .signup_a': 'toggleSignIn'
     },
     login: function() {
@@ -36,14 +36,17 @@ define([
       vis.hide();
       hid.fadeToggle("slow", "linear");
     },
-    createUser: function() {
+    createUserAndSignin: function() {
       var name = this.$el.find('input[name=name]').val();
       var email = this.$el.find('input[name=s_email]').val();
       var password = this.$el.find('input[name=s_password]').val();
       var valid_email = ( email.search(/@/) > 0 )
       if(name && email && password) {
-        var user = new User({user: {name: name, email: email, password: password}});
+        var creds = {user: {name: name, email: email, password: password}};
+        var user = new User(creds);
         user.save();
+        var session = new Session;
+        session.login(creds);
       } else if (!valid_email) {
         $('.signup-errors', this.el).hide().html(_.template(loginErrorsTemplate, {message: 'Please provide a valid email address.'})).slideDown(200);
       }
