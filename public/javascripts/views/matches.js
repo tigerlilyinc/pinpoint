@@ -9,6 +9,7 @@ define([
   var view = Backbone.View.extend({
     el: $('#content'),
     events: {
+      "click .not-interested": "notInterested",
       "click .show-details": "showDetails"
     },
     initialize: function() {
@@ -28,6 +29,13 @@ define([
       this.matchesCollection.each(function(match) {
         ul.append(_.template(matchesCompanyTemplate, {match: match}));
       });
+    },
+    // notInterested and showDetails really should be in a model view rather than a collection view.
+    notInterested: function(e) {
+      var currentTarget = $(e.currentTarget);
+      currentTarget.parents('.company').fadeOut();
+      var match = this.matchesCollection.models[0]; // TODO: Change me when this is moved to the model.
+      match.notInterested();
     },
     showDetails: function() {
       var details = this.$el.find(".details");

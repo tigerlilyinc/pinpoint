@@ -6,6 +6,11 @@ class InterestDecision < ActiveRecord::Base
   validates_presence_of :requisition
   validates_presence_of :user
 
+  def uninterested!
+    self.disposition = "uninterested"
+    self.save!
+  end
+
   def serializable_hash(options)
     options ||= {}
 

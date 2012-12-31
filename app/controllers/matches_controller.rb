@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   def index
-    interest_decisions = current_user.interest_decisions
+    interest_decisions = current_user.undecided_interest_decisions
 
     matches = []
     interest_decisions.group_by{|i| i.requisition.company}.each do |company, interest_decisions|

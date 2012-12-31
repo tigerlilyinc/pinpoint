@@ -8,6 +8,12 @@ Pinpoint::Application.routes.draw do
     post "users", :to => "registrations#create"
   end
 
+  resources :companies, :only => :none do
+    member do
+      post :uninterested
+    end
+  end
+
   resources :matches, :only => :index
   resources :tags, :only => :index
   resources :user_tags, :only => [:create, :destroy]

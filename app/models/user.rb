@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :positions, :through => :user_tags, :class_name => "Tag::Position", :source => :tag
 
   has_many :interest_decisions
+  has_many :undecided_interest_decisions, :class_name => "InterestDecision", :conditions => ["disposition is null"]
 
   before_save :ensure_authentication_token
 
