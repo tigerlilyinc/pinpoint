@@ -24,7 +24,6 @@ define([
     },
     render: function() {
       this.$el.html(_.template(template));
-
       var userName = window.pinpoint.user.name;
       var nameInput = this.$el.find("input[name=inputName]");
       nameInput.val(userName);
@@ -94,9 +93,10 @@ define([
     },
     saveUserInfo: function (e) {
       var currentUser = new User(window.pinpoint.user);
-      currentUser.set({email: this.$el.find("input[name=inputEmail]").val()});
-      currentUser.set({name: this.$el.find("input[name=inputName]").val()});
-      currentUser.set({contact_me: this.$el.find("input[name=involvement]").is(':checked')});
+      window.pinpoint.user.email = this.$el.find("input[name=inputEmail]").val();
+      window.pinpoint.user.name = this.$el.find("input[name=inputName]").val();
+      window.pinpoint.user.contact_me = this.$el.find("input[name=involvement]").is(':checked');
+      currentUser.set({'id':window.pinpoint.user.id, 'name': window.pinpoint.user.name, 'email': window.pinpoint.user.email, 'contact_me': window.pinpoint.user.contact_me});
       currentUser.save();
     }
   });
