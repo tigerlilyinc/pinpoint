@@ -78,6 +78,12 @@ define([
 
       if (tagEl.hasClass("is-active")) {
         userTag.id = -1;
+        for (var i = 0; i < window.pinpoint.user.user_tags.length; i++) {
+          if(window.pinpoint.user.user_tags[i].tag_id == userTag.get("tag_id")){
+            window.pinpoint.user.user_tags.remove(i);
+            break;
+          }
+        }
         userTag.destroy({
           data: {
             user_id: userTag.get("user_id"),
@@ -87,8 +93,9 @@ define([
         });
       } else {
         userTag.save();
+        window.pinpoint.user.user_tags.push(userTag.toJSON());
       }
-
+      var userTags = window.pinpoint.user.user_tags;
       tagEl.toggleClass("is-active");
     },
     saveUserInfo: function (e) {
