@@ -7,7 +7,8 @@ define([
        'router',
        'views/main',
        'views/login',
-       'jquery_distinct'
+       'jquery_distinct',
+       'array_remove'
 ], function($, _, Backbone, Bus, Session, Router, MainView, LoginView) {
   var initialize = function() {
     window.pinpoint = {};

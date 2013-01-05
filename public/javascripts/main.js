@@ -21,15 +21,16 @@ require.config({
     }
   },
   paths: {
+    array_remove: 'libs/javascript/array-remove',
+    backbone: 'libs/backbone/backbone-min',
     etch: 'libs/etch/etch',
     jquery: 'libs/jquery/jquery-min',
     jquery_distinct: 'libs/jquery/jquery-distinct',
     jquery_highlight: 'libs/jquery/jquery-highlight',
     jquery_serialize: 'libs/jquery/jquery-serialize',
-    underscore: 'libs/underscore/underscore-min',
-    backbone: 'libs/backbone/backbone-min',
     text: 'libs/require/plugins/text',
-    templates: '../templates'
+    templates: '../templates',
+    underscore: 'libs/underscore/underscore-min'
   }
 });
 
