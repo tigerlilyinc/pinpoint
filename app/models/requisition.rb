@@ -9,7 +9,7 @@ class Requisition < ActiveRecord::Base
     options ||= {}
 
     options = {
-      :include => [ :skills, :positions ]
+      :include => [ :company, :skills, :positions ]
     }.update(options)
 
     super(options)

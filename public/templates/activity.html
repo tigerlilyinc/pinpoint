@@ -1,2 +1,12 @@
-ACTIVITY
+<div class="activity">
+  ACTIVITY
+  <br /><br />
+  <ul>
+    <% interestDecisionsCollection.each(function(interestDecision) { %>
+      <li>
+        <%= interestDecision.get("disposition") %> - <%= interestDecision.get("requisition").company.name %>, <%= interestDecision.get("requisition").name %>
+      </li>
+    <% }) %>
+  </ul>
+</div>
 

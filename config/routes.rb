@@ -14,7 +14,7 @@ Pinpoint::Application.routes.draw do
     end
   end
 
-  resources :interest_decisions, :only => :none do
+  resources :interest_decisions, :only => [:index] do
     member do
       post :interested
       post :uninterested
