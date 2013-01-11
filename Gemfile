@@ -5,7 +5,7 @@ gem 'debugger'
 gem 'devise', '~> 2.1.2'
 gem 'jquery-rails'
 gem 'pg'
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.11'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
