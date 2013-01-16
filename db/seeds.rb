@@ -363,7 +363,7 @@ companies = [
     :crunchbase_url => "http://www.crunchbase.com/company/insightly",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
-                         :skills => [],
+                         :skills => [".NET", "memcached", "JavaScript"],
                          :positions => [] } ] },
   { :name => "isocket",
     :email => "john@isocket.com",
