@@ -928,6 +928,8 @@ companies = [
 # Level Up Analytics (Justin knows Anu)
 # Iridescent (Justin knows Anu)
 # Square (Justin emailed Heisterkamp on 1/16/2013)
+# General Things (received recruiting email from TheSourcery)
+# Picarro "We are looking for an engineer to build the backend of our cloud platform service"
 
 companies.each do |company_data|
   puts "Creating #{company_data[:name]}..."
