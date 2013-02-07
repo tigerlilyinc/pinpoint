@@ -429,6 +429,16 @@ companies = [
                          :description => "TODO",
                          :skills => ["Ruby/Rails", "JavaScript"],
                          :positions => [] } ] },
+  { :name => "Marqeta",
+    :email => "chuang@marqeta.com",
+    :contact_name => "Clark Huang", #Kevin has no connection to Clark, CTO of Marqeta
+    :url => "https://marqeta.com/",
+    :description => "A rewards card company for everyday items from groceries to restaurants to automotive services.  You need to pay with the card to get rewards.",
+    :misc => "Has an API that Facebook used for their Gift Card program",
+    :requisitions => [ { :name => "TODO",
+                         :description => "TODO",
+                         :skills => ["Ruby/Rails", "JavaScript"],
+                         :positions => [] } ] },
   { :name => "Medium",
     :email => "team@medium.com",
     :contact_name => "Medium Team", # Justin has no connections
