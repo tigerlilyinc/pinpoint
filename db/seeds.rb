@@ -36,6 +36,8 @@ tag_proc = Proc.new { |tag_value|
   tag
 }
 
+# TEST
+
 companies = [
   { :name => "UniversityNow",
     :email => "kathleen@unow.com",
@@ -58,7 +60,7 @@ companies = [
                         { :name => "QA Developer",
                           :description => "Love testing? We need someone to ensure our code goes out bug free!",
                           :skills => [ "Ruby/Rails", "RSpec", "PostgreSQL" ],
-                          :positions => [ "Entry", "Lead" ] } 
+                          :positions => [ "Entry", "Lead" ] }
                           ] },
   { :name => "Airbnb",
     :email => "kumi@airbnb.com",
@@ -71,7 +73,7 @@ companies = [
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => [ "Ruby/Rails", "iOS", "Android" ],
-                         :positions => [] } 
+                         :positions => [] }
                          ] },
   { :name => "AliveCor",
     :email => "david@alivecor.com", # Justin has no connection
@@ -85,10 +87,10 @@ companies = [
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => [ "Android", "iOS", "JavaScript", "HTML", "Ruby", "Python" ],
-                         :positions => [] } 
-                         ] 
+                         :positions => [] }
+                         ]
 	},
-	
+
   { :name => "Appdynamics",
     :email => "erowe@appdynamics.com",
     :contact_name => "Ed Rowe", # Justin has no connections
@@ -100,10 +102,10 @@ companies = [
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => [ "Java", "C#", ".NET" ],
-                         :positions => [] } 
+                         :positions => [] }
                          ]
 	},
-	
+
   { :name => "Asana",
     :url => "http://www.asana.com/",
     :description => "Team workflow management",
@@ -119,10 +121,10 @@ companies = [
                        { :name => "Data Infrastructure Engineer",
                          :description => "The Data Infrastructure Engineer is a critical role for Asana’s growth. As a key member of the engineering team, you will work closely with the product teams to build out and refine the infrastructure we use to gain insights from our data and evaluate our success. As our user base rapidly grows, you will architect and develop improvements to our data infrastructure, and design and implement data analysis tools that increase the scalability, accuracy and accessibility of our data to support ongoing product decisions.",
                          :skills => [ "SQL" ],
-                         :positions => ["Senior"] } 
-                         ] 
+                         :positions => ["Senior"] }
+                         ]
 	},
-	
+
   { :name => "Bunchball",
     :email => "rajat@bunchball.com",
     :contact_name => "Rajat Paharia", # Justin's only connection is a girl he played tennis with twice
@@ -134,7 +136,7 @@ companies = [
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => [ "Java" ],
-                         :positions => [] } 
+                         :positions => [] }
                          ] },
   { :name => "CardSpring",
     :email => "jeff@cardspring.com",
@@ -147,7 +149,7 @@ companies = [
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => [ "Ruby/Rails", "CoffeeScript", "Node.js" ],
-                         :positions => [] } 
+                         :positions => [] }
                          ] },
   { :name => "Climate Corporation",
     :email => "andy@climate.com",
