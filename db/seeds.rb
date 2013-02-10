@@ -61,7 +61,9 @@ companies = [
                           :description => "Love testing? We need someone to ensure our code goes out bug free!",
                           :skills => [ "Ruby/Rails", "RSpec", "PostgreSQL" ],
                           :positions => [ "Entry", "Lead" ] }
-                          ] },
+                          ] 
+	},
+	
   { :name => "Airbnb",
     :email => "kumi@airbnb.com",
     :contact_name => "Kumi Bailey", # Justin emailed on 1/16/2013
@@ -74,7 +76,9 @@ companies = [
                          :description => "TODO",
                          :skills => [ "Ruby/Rails", "iOS", "Android" ],
                          :positions => [] }
-                         ] },
+                         ] 
+	},
+	
   { :name => "AliveCor",
     :email => "david@alivecor.com", # Justin has no connection
     :contact_name => "David Albert",
