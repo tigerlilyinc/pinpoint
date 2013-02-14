@@ -745,6 +745,18 @@ companies = [
                          :description => "TODO",
                          :skills => ["C", "C++"],
                          :positions => [] } ] },
+  { :name => "QuantCast",
+    :email => "dreeves@quantcast",
+    :contact_name => "Damien Reevers", #
+    :url => "https://www.quantcast.com/",
+    :description => "Online ad analytics that champions quantifying data of audiences and campaign effectiveness.",
+    :location => "Soma",
+    :industries => ["Data Analytics", "Advetising"],
+    :crunchbase_url => "http://www.crunchbase.com/company/quantcast",
+    :requisitions => [ { :name => "TODO",
+                         :description => "TODO",
+                         :skills => ["Ruby/Rails", ""],
+                         :positions => [] } ] },
   { :name => "Rally",
     :email => "brian@rally.org",
     :contact_name => "Brian Upton", # Alex and JJ
@@ -968,6 +980,7 @@ companies = [
 # Picarro "We are looking for an engineer to build the backend of our cloud platform service"
 # Seamless
 # MapR
+# electric imp
 
 companies.each do |company_data|
   puts "Creating #{company_data[:name]}..."
