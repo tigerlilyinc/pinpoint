@@ -783,6 +783,20 @@ companies = [
                          :description => "TODO",
                          :skills => ["Python", "PHP", "QT"],
                          :positions => [] } ] },
+  { :name => "Rosetta Stone",
+    :email => "nmacey@rosettastone.com",
+    :contact_name => "Nick Macey", # Justin and Kevin have no connections
+    :url => "http://www.rosettastone.com/",
+    :description => "Language learning software - most popular language software in the world.  Based in Virginia, opening an office in San Francisco with many roles to fill.",
+    :stack => ["android", "ios", "Ruby/Rails", "Cassandra", "Redis", "Memcached", "MySQL"],
+    :misc => "",
+    :location => "SF",
+    :industries => ["Education"],
+    :crunchbase_url => "http://www.crunchbase.com/company/rosettastone",
+    :requisitions => [ { :name => "Platform Engineer",
+                         :description => "TODO",
+                         :skills => ["Ruby", "Android", "iOS"],
+                         :positions => [] } ] },
   { :name => "shopkick",
     :email => "aaron@shopkick.com",
     :contact_name => "Aaron Emigh", # Justin and Kevin have no connections, except Laura WP knows the Director of Partnerships
@@ -898,7 +912,7 @@ companies = [
                          :positions => [] } ] },
   { :name => "Twitch.tv",
     :email => "Justin@twitch.tv",
-    :contact_name => "Justin Kan", # Justin has no connections, Kevin chilled with a bunch of their employees at the Treasure Island party
+    :contact_name => "Justin Kan", # Justin has no connections, Kevin knows a guy that works there
     :url => "http://www.twitch.tv",
     :description => "We're building the world's largest video platform and community for gamers, and we're looking for smart, passionate people to help us do it.",
     :industries => ["Gaming"],
@@ -981,6 +995,9 @@ companies = [
 # Seamless
 # MapR
 # electric imp
+# GREE
+# fitbit
+#Kappboom
 
 companies.each do |company_data|
   puts "Creating #{company_data[:name]}..."
