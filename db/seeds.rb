@@ -999,6 +999,10 @@ companies = [
 # fitbit
 # Kappboom
 # Lending Club
+# Yodle
+# Mirantis
+# Uber
+
 companies.each do |company_data|
   puts "Creating #{company_data[:name]}..."
   industry_tags = company_data[:industries].map(&tag_proc)
