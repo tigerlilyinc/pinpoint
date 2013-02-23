@@ -1,6 +1,27 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
+#helper method for create candidate data.
+class Array
+  def replce_if(p , r)
+    self.map! {|e| e == p ? e = r : e}
+  end
+end
+
+#grenerating all the candidate data
+File.open("#{Dir.pwd}/db/candidates.csv").each do |l|
+  pp l.split(',').replce_if("", nil)
+  name,email,first_contacted,source,last_contacted,notes,contact_at,status = l.split(',').replce_if("", nil)
+  Candidate.create! ({
+    :full_name => name,
+    :email => email,
+    :status => status.chop!,
+    :source => source,
+    :notes => notes,
+    :recruiter => "(unknown)",
+    :contact_at => contact_at ? Date.parse(contact_at).to_s(:db) : nil
+  })
+end
 
 
 user = User.create!(:name => "Charles Xavier", :email => "user@host.test", :password => "asdfasdf")
@@ -123,7 +144,7 @@ companies = [
                          :skills => [ "JavaScript", "HTML", "CSS" ],
                          :positions => ["Junior", "Senior"] },
                        { :name => "Data Infrastructure Engineer",
-                         :description => "The Data Infrastructure Engineer is a critical role for Asana’s growth. As a key member of the engineering team, you will work closely with the product teams to build out and refine the infrastructure we use to gain insights from our data and evaluate our success. As our user base rapidly grows, you will architect and develop improvements to our data infrastructure, and design and implement data analysis tools that increase the scalability, accuracy and accessibility of our data to support ongoing product decisions.",
+                         # :description => "The Data Infrastructure Engineer is a critical role for Asana’s growth. As a key member of the engineering team, you will work closely with the product teams to build out and refine the infrastructure we use to gain insights from our data and evaluate our success. As our user base rapidly grows, you will architect and develop improvements to our data infrastructure, and design and implement data analysis tools that increase the scalability, accuracy and accessibility of our data to support ongoing product decisions.",
                          :skills => [ "SQL" ],
                          :positions => ["Senior"] }
                          ]
@@ -252,7 +273,7 @@ companies = [
     :misc => "Very early stage - founded by some bright developers, put a lot of focus on hiring technical folks",
     :location => "Sunnyvale",
     :industries => ["Education"],
-    :crunchbase_url => "http://www.crunchbase.com/company/educreations" },
+    :crunchbase_url => "http://www.crunchbase.com/company/educreations",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => ["Python", "Django"],
@@ -592,7 +613,7 @@ companies = [
     :description => "Low cost primary care service providers - currently just building out in major cities but have plans to expand",
     :location => "SF",
     :industries => ["Medical"],
-    :crunchbase_url => "http://www.crunchbase.com/company/one-medical-group-2" },
+    :crunchbase_url => "http://www.crunchbase.com/company/one-medical-group-2",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => ["Ruby/Rails"],
@@ -666,7 +687,7 @@ companies = [
     :description => "Ultra-high performance greenhouse gas and environmental analyzers",
     :location => "Santa Clara",
     :industries => ["Energy"],
-    :crunchbase_url => "http://www.crunchbase.com/company/picarro" },
+    :crunchbase_url => "http://www.crunchbase.com/company/picarro",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => ["Node.js", "MongoDB", "Python"],
@@ -842,7 +863,7 @@ companies = [
     :description => "Stitch Fix is an early stage startup building a disruptive, data-driven, retail platform. We have gobs of paying customers and things are growing fast. We're currently a small, senior dev & analytics team based in SF - but we'd like to add some more talented folks. ",
     :location => "SF",
     :industries => ["Commerce", "Analytics"],
-    :crunchbase_url => "http://www.crunchbase.com/company/stitch-fix" },
+    :crunchbase_url => "http://www.crunchbase.com/company/stitch-fix",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => ["Ruby", "Python", "R", "PSQL"],
@@ -869,7 +890,7 @@ companies = [
     :stack => ["mobile"],
     :misc => "Just raised $900k through some miracle.",
     :industries => ["Utility"],
-    :crunchbase_url => "http://www.crunchbase.com/company/syntellia" },
+    :crunchbase_url => "http://www.crunchbase.com/company/syntellia",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => [],

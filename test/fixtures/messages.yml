@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  text: MyText
+  notes: MyText
+  direction: MyString
+  timestamp: 2013-02-22 20:19:36
+
+two:
+  text: MyText
+  notes: MyText
+  direction: MyString
+  timestamp: 2013-02-22 20:19:36
