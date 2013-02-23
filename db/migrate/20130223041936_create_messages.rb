@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.text :text
       t.text :notes
       t.string :direction
-      t.timestamps :timestamp
+      t.datetime :timestamp
 
       t.timestamps
     end

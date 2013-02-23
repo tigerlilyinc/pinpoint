@@ -7,7 +7,7 @@ class CreateCandidates < ActiveRecord::Migration
       t.text :notes
       t.string :source
       t.string :recruiter
-      t.timestamps :contact_at
+      t.date :contact_at
 
       t.timestamps
     end

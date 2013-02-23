@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114211048) do
+ActiveRecord::Schema.define(:version => 20130223041936) do
+
+  create_table "candidates", :force => true do |t|
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "status"
+    t.text     "notes"
+    t.string   "source"
+    t.string   "recruiter"
+    t.date     "contact_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -57,6 +69,14 @@ ActiveRecord::Schema.define(:version => 20130114211048) do
 
   add_index "leads", ["email"], :name => "index_leads_on_email", :unique => true
   add_index "leads", ["name"], :name => "index_leads_on_name"
+
+  create_table "messages", :force => true do |t|
+    t.text     "text"
+    t.text     "notes"
+    t.string   "direction"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "requisition_tags", :force => true do |t|
     t.integer  "requisition_id"
