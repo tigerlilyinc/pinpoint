@@ -32,7 +32,7 @@ skill_tags.each do |tag|
 end
 
 # Please keep these alphabetized.
-industry_tags = ["Advertising", "Analytics", "Commerce", "Consulting", "Dating", "Education", "Energy", "Entertainment", "Environment", "Fashion", "Gaming", "Infrastructure", "Local", "Medical", "Mobile", "Music", "Nonprofit", "Political", "Recruiting", "Retail", "Social", "Security", "Travel", "Utility"]
+industry_tags = ["Advertising", "Analytics", "Commerce", "Consulting", "Dating", "Education", "Energy", "Entertainment", "Environment", "Fashion", "Gaming", "Infrastructure", "Local", "Medical", "Mobile", "Music", "Nonprofit", "Political", "Productivity", "Publishing", "Recruiting", "Retail", "Social", "Security", "Travel", "Utility"]
 industry_tags.each do |tag|
   Tag::Industry.create!(:value => tag)
 end
@@ -481,6 +481,7 @@ companies = [
     :url => "https://marqeta.com/",
     :description => "A rewards card company for everyday items from groceries to restaurants to automotive services.  You need to pay with the card to get rewards.",
     :misc => "Has an API that Facebook used for their Gift Card program",
+    :industries => ["Commerce"],
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
                          :skills => ["Ruby/Rails", "JavaScript"],
@@ -490,6 +491,7 @@ companies = [
     :contact_name => "Medium Team", # Justin and Kevin have no connections
     :url => "https://medium.com/",
     :description => "",
+    :industries => ["Social", "Publishing"],
     :misc => "Offering absurdly high comp - $175k + equity",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
@@ -771,7 +773,7 @@ companies = [
     :url => "https://www.quantcast.com/",
     :description => "Online ad analytics that champions quantifying data of audiences and campaign effectiveness.",
     :location => "Soma",
-    :industries => ["Data Analytics", "Advetising"],
+    :industries => ["Analytics", "Advertising"],
     :crunchbase_url => "http://www.crunchbase.com/company/quantcast",
     :requisitions => [ { :name => "TODO",
                          :description => "TODO",
